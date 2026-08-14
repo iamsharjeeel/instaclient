@@ -21,6 +21,8 @@ pnpm run preview
 
 Git-push to `main` deploys. Framework is Vite; output directory is `dist/public`; SPA routes rewrite to `index.html`.
 
+Production: https://instaclient-zeta.vercel.app
+
 Optional env vars (all environments if used):
 
 | Variable | Purpose |

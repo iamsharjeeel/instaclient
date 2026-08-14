@@ -17,6 +17,11 @@ InstaClient marketing site is a **static Vite SPA**. Do not add a Node server un
 - `client/src/pages/PrivacyPolicy.tsx`, `TermsOfService.tsx`
 - `client/public/images/`, `favicon.svg`, `robots.txt`, `sitemap.xml`
 
+## Live
+
+- Production: https://instaclient-zeta.vercel.app
+- Dashboard: https://vercel.com/iamsharjeeel-3966s-projects/instaclient
+
 ## Pending (manual)
 
 - Attach `instaclient.io` / `www` on the Vercel project.
