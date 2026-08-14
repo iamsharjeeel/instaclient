@@ -4,6 +4,7 @@ This is a condensed continuity record of the most meaningful site decisions. The
 
 | Version / period | Change preserved in current source |
 |---|---|
+| 2026-08-14 | Luxury scroll/motion: Lenis, shared easing, lazy below-fold sections, WebP images. No layout/copy/color change. |
 | 2026-08-14 | Static Vite + Vercel publish prep: local public images, SPA rewrites, Manus/Express host removed. |
 | `8d66728e` | Removed all free-trial language from the Pricing header and Terms of Service billing section. |
 | `ff29474b` → `d4ffffbf` | Updated industry positioning and descriptions, equalized card lengths, and reduced industry heading size to prevent wrapping. |

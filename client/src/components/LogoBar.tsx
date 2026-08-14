@@ -5,6 +5,7 @@
  */
 
 import { motion } from "framer-motion";
+import { luxuryTransition, staggerTransition, view } from "@/lib/motion";
 
 const businesses = [
   "Lux Med Spa",
@@ -21,8 +22,8 @@ export default function LogoBar() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="text-center text-sm font-medium text-[oklch(0.55_0.015_265)] mb-8 tracking-wide uppercase"
         >
           Trusted by high-ticket local service businesses
@@ -31,10 +32,10 @@ export default function LogoBar() {
           {businesses.map((name, i) => (
             <motion.div
               key={name}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              viewport={view}
+              transition={staggerTransition(i)}
               className="flex items-center gap-2 text-[oklch(0.55_0.015_265)] hover:text-[oklch(0.42_0.19_265)] transition-colors"
             >
               <div className="w-6 h-6 rounded-md gradient-bg-primary opacity-70 flex items-center justify-center flex-shrink-0">

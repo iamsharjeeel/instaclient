@@ -7,6 +7,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { TrendingUp, DollarSign, Users, Clock, X, Calculator } from "lucide-react";
+import { luxuryEase, luxuryTransition, scrollToHash, staggerTransition, view } from "@/lib/motion";
 
 const DASHBOARD_IMG = "https://private-us-east-1.manuscdn.com/sessionFile/23E3gilc602mXSvb0I5jYs/sandbox/oZhnKX3lU2Z5SX2jn7peHi-img-3_1771990878000_na1fn_Y2xpZW50Zmxvdy1kYXNoYm9hcmQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMjNFM2dpbGM2MDJtWFN2YjBJNWpZcy9zYW5kYm94L29aaG5LWDNsVTJaNVNYMmpuN3BlSGktaW1nLTNfMTc3MTk5MDg3ODAwMF9uYTFmbl9ZMnhwWlc1MFpteHZkeTFrWVhOb1ltOWhjbVEucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=TJiMl98pX~XY4~Yk3XCdi~ubFfldgVSxjY7fDYKnJ6ZOaEmIvZlKQuoy8T2Cg2JzWXs2mzeuaiAsXiwN0uZ2SFVAmT4Er-KLQJb0dgfKOB4b-Pkd3FCpn88uVX0zKaGhhPLQE-BgWNdDTR9E51z~KDXMrlYJcxiwzTcz~HKT8AclBo0Hcn0AMM704nbf7S5dCuM9pCE62hZCAYLVDEgK2BQ~1omZV6jrCndgbqjru430fJ8yxqieOVrNR-I0KBDMnD~xoquJ1-NmIxwjt5mWxjhSYQeUq~Ymh~vNWABNME1jEO4smEnQIhoBoxG8EaUUxi1oK~wTWWUuk~Cj6S6zhg__";
 
@@ -96,7 +97,7 @@ function ROICalculatorModal({ onClose }: { onClose: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.35, ease: luxuryEase }}
         className="fixed inset-0 z-50 flex items-center justify-center p-4"
         style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
         onClick={onClose}
@@ -105,7 +106,7 @@ function ROICalculatorModal({ onClose }: { onClose: () => void }) {
           initial={{ opacity: 0, scale: 0.97, y: 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97, y: 8 }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: luxuryEase }}
           className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
@@ -203,7 +204,7 @@ function ROICalculatorModal({ onClose }: { onClose: () => void }) {
           <button
             onClick={() => {
               onClose();
-              document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" });
+              scrollToHash("#cta");
             }}
             className="btn-primary w-full py-3.5 rounded-xl font-semibold font-display text-sm mt-4 flex items-center justify-center gap-2"
           >
@@ -234,10 +235,10 @@ export default function ROISection() {
       <div className="container relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[oklch(0.72_0.15_195)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -259,10 +260,10 @@ export default function ROISection() {
             return (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={view}
+                transition={staggerTransition(i)}
                 className="bg-white/8 backdrop-blur-sm rounded-2xl p-6 border border-white/15 hover:border-white/30 transition-colors group"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white/15 transition-colors">
@@ -282,10 +283,10 @@ export default function ROISection() {
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Dashboard mockup */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={view}
+            transition={luxuryTransition}
           >
             <img
               src={DASHBOARD_IMG}
@@ -297,10 +298,10 @@ export default function ROISection() {
 
           {/* ROI breakdown */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={view}
+            transition={luxuryTransition}
           >
             <h3 className="font-display text-2xl font-bold text-white mb-2" style={{ fontWeight: 700 }}>
               Your ROI, calculated
@@ -312,10 +313,10 @@ export default function ROISection() {
               {roiCalcItems.map((item, i) => (
                 <motion.div
                   key={item.label}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: 12 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  viewport={view}
+                  transition={staggerTransition(i)}
                   className={`flex items-center justify-between py-3 px-4 rounded-xl ${
                     i === roiCalcItems.length - 1
                       ? "bg-[oklch(0.72_0.15_195)] text-[oklch(0.14_0.015_265)]"
@@ -335,8 +336,8 @@ export default function ROISection() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={view}
+              transition={{ ...luxuryTransition, delay: 0.2 }}
               className="mt-6"
             >
               <button

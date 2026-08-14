@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
 import { useState } from "react";
+import { luxuryTransition, scrollToHash, staggerTransition, view } from "@/lib/motion";
 
 type Feature = {
   name: string;
@@ -88,10 +89,10 @@ export default function PricingSection() {
       <div className="container">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="max-w-2xl mb-4"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -108,8 +109,8 @@ export default function PricingSection() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={view}
+          transition={{ ...luxuryTransition, delay: 0.1 }}
           className="flex items-center gap-3 mb-12"
         >
           <span className={`text-sm font-medium ${!annual ? "text-[oklch(0.14_0.015_265)]" : "text-[oklch(0.55_0.015_265)]"}`}>Monthly</span>
@@ -130,10 +131,10 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 32 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
+              viewport={view}
+              transition={staggerTransition(i)}
               className={`relative rounded-3xl border-2 ${plan.color} ${
                 plan.popular
                   ? "bg-[oklch(0.14_0.015_265)] shadow-2xl lg:-mt-4 lg:mb-4"
@@ -173,7 +174,7 @@ export default function PricingSection() {
 
               {/* CTA */}
               <button
-                onClick={() => document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => scrollToHash("#cta")}
                 className={`w-full py-3.5 rounded-xl font-semibold font-display text-sm mb-6 transition-all ${
                   plan.popular
                     ? "btn-primary"
@@ -233,10 +234,10 @@ export default function PricingSection() {
 
         {/* Guarantee callout */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={view}
+          transition={{ ...luxuryTransition, delay: 0.2 }}
           className="mt-10 mx-auto max-w-2xl"
         >
           <div className="flex items-start gap-4 bg-white border border-[oklch(0.88_0.015_265)] rounded-2xl px-6 py-5 shadow-sm">

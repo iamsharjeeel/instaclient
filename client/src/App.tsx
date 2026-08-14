@@ -1,8 +1,10 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { MotionConfig } from "framer-motion";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import SmoothScroll from "./components/SmoothScroll";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -23,12 +25,15 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster position="top-right" richColors />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <SmoothScroll />
+        <ThemeProvider defaultTheme="light">
+          <TooltipProvider>
+            <Toaster position="top-right" richColors />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </MotionConfig>
     </ErrorBoundary>
   );
 }

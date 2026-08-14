@@ -8,6 +8,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Zap, Brain, Calendar, Bell, BarChart3, Shield } from "lucide-react";
+import { luxuryEase, luxuryTransition, staggerTransition, view } from "@/lib/motion";
 
 const features = [
   {
@@ -122,7 +123,7 @@ function SMSDemo() {
               key={msg.id}
               initial={{ opacity: 0, y: 8, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: luxuryEase }}
               className={`flex ${msg.from === "ai" ? "justify-start" : "justify-end"}`}
             >
               <div
@@ -172,10 +173,10 @@ export default function FeaturesSection() {
       <div className="container">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -198,14 +199,14 @@ export default function FeaturesSection() {
               return (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  viewport={view}
+                  transition={staggerTransition(i)}
                   className="bg-white rounded-2xl p-6 border border-[oklch(0.91_0.006_265)] card-hover group"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl gradient-bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl gradient-bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-500">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                     <div className="font-mono-stat text-2xl font-bold text-[oklch(0.42_0.19_265)]">
@@ -226,10 +227,10 @@ export default function FeaturesSection() {
 
           {/* Right: Live SMS Demo */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={view}
+            transition={luxuryTransition}
             className="lg:sticky lg:top-24"
           >
             <div className="mb-6">

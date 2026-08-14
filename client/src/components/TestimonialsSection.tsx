@@ -1,15 +1,9 @@
-/*
- * InstaClient Testimonials Section
- * Design: Clean white cards, star ratings, customer photos via Unsplash
- * Layout: 3-column grid with featured quote
- * Named clients: Dr. Dinakar Golla (Golla Plastic Surgery), Dr. James Worry (Golla Dermatology)
- * Dr. Tony Garrow replaced with real American Laser Med Spa owner reference
- */
-
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import { useRef } from "react";
+import { luxuryTransition, staggerTransition, view } from "@/lib/motion";
 
-const MEDSPA_IMG = "/images/medspa-cropped.png";
+const MEDSPA_IMG = "/images/medspa-cropped.webp";
 
 const testimonials = [
   {
@@ -25,7 +19,7 @@ const testimonials = [
     quote: "I assumed our front desk had follow-up under control. Turns out we were dropping 8 to 10 calls a week — mostly after hours. InstaClient recovered 6 consults in the first two weeks alone. Patients actually comment on how fast we respond now.",
     author: "Dr. Dinakar Golla",
     role: "Owner, Golla Plastic Surgery",
-    avatar: "/images/dr-golla.png",
+    avatar: "/images/dr-golla.webp",
     revenue: "$11,200 recovered",
     stars: 5,
     featured: false,
@@ -52,7 +46,7 @@ const testimonials = [
     quote: "We had a patient list we hadn't touched in over a year. InstaClient ran a reactivation campaign and we generated $31,500 in booked appointments from existing patients in just over 45 days. That's revenue that was already sitting there — we just needed a system to go get it.",
     author: "Dr. James Worry",
     role: "Owner, Golla Dermatology",
-    avatar: "/images/dr-worry.png",
+    avatar: "/images/dr-worry.webp",
     revenue: "$31,500 reactivated",
     stars: 5,
     featured: false,
@@ -60,15 +54,21 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const featuredRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: featuredRef,
+    offset: ["start end", "end start"],
+  });
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.06, 1]);
+
   return (
     <section id="testimonials" className="py-24 lg:py-32 bg-white">
       <div className="container">
-        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -84,22 +84,29 @@ export default function TestimonialsSection() {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
-          {/* Featured testimonial with image */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            ref={featuredRef}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
+            viewport={view}
+            transition={luxuryTransition}
             className="lg:col-span-1 lg:row-span-2 rounded-3xl overflow-hidden"
-            style={{ position: 'relative', minHeight: '520px' }}
+            style={{ position: "relative", minHeight: "520px" }}
           >
-            <img
+            <motion.img
               src={MEDSPA_IMG}
               alt="Premium medical spa interior"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                scale: imgScale,
+              }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,18,35,1) 0%, rgba(15,18,35,0.65) 45%, rgba(15,18,35,0.15) 75%, transparent 100%)' }} />
-            <div style={{ position: 'absolute', inset: 0, zIndex: 10, padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(15,18,35,1) 0%, rgba(15,18,35,0.65) 45%, rgba(15,18,35,0.15) 75%, transparent 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, zIndex: 10, padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <Quote className="w-8 h-8 text-[oklch(0.72_0.15_195)] mb-4" />
               <p className="text-white text-lg leading-relaxed font-medium mb-6">
                 "{testimonials[0].quote}"
@@ -121,17 +128,15 @@ export default function TestimonialsSection() {
             </div>
           </motion.div>
 
-          {/* Regular testimonial cards */}
           {testimonials.slice(1).map((t, i) => (
             <motion.div
               key={t.author}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: (i + 1) * 0.1 }}
+              viewport={view}
+              transition={staggerTransition(i + 1)}
               className="bg-white rounded-2xl p-6 border border-[oklch(0.91_0.006_265)] card-hover"
             >
-              {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.stars }).map((_, si) => (
                   <Star key={si} className="w-4 h-4 text-amber-400 fill-amber-400" />

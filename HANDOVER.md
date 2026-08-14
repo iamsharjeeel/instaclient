@@ -2,6 +2,13 @@
 
 InstaClient marketing site is a **static Vite SPA**. Do not add a Node server unless a feature needs one.
 
+## 2026-08-14 — Luxury scroll / motion
+
+- Desktop Lenis inertial scroll (`client/src/components/SmoothScroll.tsx`); native scroll on touch and `prefers-reduced-motion`.
+- Shared motion contract in `client/src/lib/motion.ts` (ease `[0.22, 1, 0.36, 1]`, 12px enter, ~0.8s).
+- Hash links use Lenis `scrollTo`. Featured testimonial image has a subtle scale on scroll.
+- Below-fold Home sections are lazy-loaded. Large PNGs shipped as WebP.
+
 ## 2026-08-14 — Vercel publish prep
 
 - Removed Manus runtime, storage proxy, debug collector, and Express production server.

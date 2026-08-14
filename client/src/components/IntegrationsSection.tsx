@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion";
 import { Plug } from "lucide-react";
+import { luxuryTransition, staggerTransition, view } from "@/lib/motion";
 
 const integrations = [
   { name: "Jane App", category: "Booking", color: "bg-pink-50 text-pink-700 border-pink-200" },
@@ -23,15 +24,15 @@ const integrations = [
 
 export default function IntegrationsSection() {
   return (
-    <section className="py-20 bg-[oklch(0.985_0.003_265)] border-t border-[oklch(0.91_0.006_265)]">
+    <section id="integrations" className="py-20 bg-[oklch(0.985_0.003_265)] border-t border-[oklch(0.91_0.006_265)]">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left: Copy */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={view}
+            transition={luxuryTransition}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
               <Plug className="w-3 h-3" />
@@ -54,19 +55,19 @@ export default function IntegrationsSection() {
 
           {/* Right: Integration grid */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={view}
+            transition={luxuryTransition}
             className="grid grid-cols-3 sm:grid-cols-4 gap-4"
           >
             {integrations.map((integration, i) => (
               <motion.div
                 key={integration.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={view}
+                transition={staggerTransition(i, 0.04)}
                 className={`rounded-xl border px-3 py-4 text-center card-hover ${integration.color}`}
               >
                 <div className="font-display font-semibold text-sm leading-tight">{integration.name}</div>

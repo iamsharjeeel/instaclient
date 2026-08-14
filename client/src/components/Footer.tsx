@@ -6,6 +6,7 @@
 
 import { Zap } from "lucide-react";
 import { Link } from "wouter";
+import { scrollToHash } from "@/lib/motion";
 
 const footerLinks = {
   Product: [
@@ -27,8 +28,7 @@ export default function Footer() {
       window.location.assign(`/${href}`);
       return;
     }
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    scrollToHash(href);
   };
 
   return (

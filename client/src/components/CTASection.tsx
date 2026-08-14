@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Phone, Mail } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { luxuryTransition, view } from "@/lib/motion";
 
 export default function CTASection() {
   const [form, setForm] = useState({ name: "", business: "", phone: "", email: "" });
@@ -64,10 +65,10 @@ export default function CTASection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Copy */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={view}
+            transition={luxuryTransition}
           >
             <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-6" style={{ fontWeight: 800 }}>
               More booked appointments
@@ -118,10 +119,10 @@ export default function CTASection() {
 
           {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
+            viewport={view}
+            transition={luxuryTransition}
           >
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
               {!submitted ? (

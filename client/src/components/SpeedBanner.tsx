@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion";
 import { Zap, TrendingDown, Clock, AlertTriangle } from "lucide-react";
+import { staggerTransition, view } from "@/lib/motion";
 
 const urgencyStats = [
   {
@@ -48,10 +49,10 @@ export default function SpeedBanner() {
             return (
               <motion.div
                 key={item.stat}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={view}
+                transition={staggerTransition(i)}
                 className="flex items-center gap-5"
               >
                 <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">

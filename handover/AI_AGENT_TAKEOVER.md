@@ -10,7 +10,7 @@ Maintain and extend **InstaClient**, an AI-powered speed-to-lead, missed-call re
 |---|---|---|
 | Framework | React 19, TypeScript, Vite | Frontend-only marketing application. |
 | Styling | Tailwind CSS 4 with project utilities in `client/src/index.css` | Color variables use OKLCH. Do not rewrite them casually. |
-| Motion | Framer Motion | Used for restrained viewport-triggered section entrances. |
+| Motion | Framer Motion + Lenis | Shared contract in `client/src/lib/motion.ts`. Hero phone stays static. No large parallax. |
 | Routing | Wouter | Routes: `/`, `/privacy`, `/terms`, `/404`. |
 | Icons | Lucide React | Continue using it for new UI iconography. |
 | Form behavior | `CTASection.tsx` | Validates required fields, fires GoHighLevel tracking if available, then redirects after two seconds. |

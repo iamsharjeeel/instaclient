@@ -131,18 +131,18 @@
     background: linear-gradient(135deg, oklch(0.42 0.19 265) 0%, oklch(0.35 0.20 255) 100%);
   }
   .card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -8px oklch(0.42 0.19 265 / 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -10px oklch(0.42 0.19 265 / 0.12);
   }
   .btn-primary {
     background: linear-gradient(135deg, oklch(0.42 0.19 265), oklch(0.38 0.21 260));
     color: white;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 14px oklch(0.42 0.19 265 / 0.35);
   }
   .btn-primary:hover {
@@ -173,9 +173,31 @@
   }
 }
 
-/* Smooth scroll */
-html {
+html:not(.lenis) {
   scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .card-hover,
+  .btn-primary {
+    transition: none;
+  }
+  .card-hover:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+  .animate-pulse,
+  .animate-bounce {
+    animation: none !important;
+  }
 }
 
 /* Custom scrollbar */

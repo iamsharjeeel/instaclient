@@ -6,6 +6,7 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, Stethoscope, Wrench } from "lucide-react";
+import { luxuryTransition, staggerTransition, view } from "@/lib/motion";
 
 const industries = [
   {
@@ -52,10 +53,10 @@ export default function IndustriesSection() {
       <div className="container">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          viewport={view}
+          transition={luxuryTransition}
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -76,10 +77,10 @@ export default function IndustriesSection() {
             return (
               <motion.div
                 key={industry.name}
-                initial={{ opacity: 0, y: 32 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
+                viewport={view}
+                transition={staggerTransition(i)}
                 className={`${industry.bg} rounded-3xl p-7 border border-[oklch(0.91_0.006_265)] card-hover`}
               >
                 {/* Icon */}

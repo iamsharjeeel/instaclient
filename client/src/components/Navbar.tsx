@@ -1,12 +1,7 @@
-/*
- * InstaClient Navbar
- * Design: Precision Minimalism — clean white bar, indigo CTA, Plus Jakarta Sans
- * Behavior: Sticky with backdrop blur on scroll, mobile hamburger menu
- */
-
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import { luxuryEase, luxuryTransition, scrollToHash, scrollToTop } from "@/lib/motion";
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -19,6 +14,12 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -28,16 +29,15 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    scrollToHash(href);
   };
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -12, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      transition={luxuryTransition}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-[oklch(0.91_0.006_265)]"
           : "bg-transparent"
@@ -45,11 +45,13 @@ export default function Navbar() {
     >
       <div className="container">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <a
             href="#"
             className="flex items-center gap-2 group"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToTop();
+            }}
           >
             <div className="w-8 h-8 rounded-lg gradient-bg-primary flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
               <Zap className="w-4 h-4 text-white fill-white" />
@@ -59,7 +61,6 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
@@ -72,7 +73,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => handleNavClick("#cta")}
@@ -82,7 +82,6 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden p-2 rounded-lg hover:bg-[oklch(0.97_0.005_265)] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -92,14 +91,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-[oklch(0.42_0.19_265)]"
+        style={{ scaleX: progress }}
+      />
+
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.35, ease: luxuryEase }}
             className="md:hidden bg-white border-b border-[oklch(0.91_0.006_265)] overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-1">

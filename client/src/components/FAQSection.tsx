@@ -7,6 +7,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { luxuryEase, luxuryTransition, scrollToHash, view } from "@/lib/motion";
 
 const faqs = [
   {
@@ -44,10 +45,10 @@ export default function FAQSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left: Header */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={view}
+            transition={luxuryTransition}
             className="lg:sticky lg:top-24 h-fit"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[oklch(0.96_0.008_265)] border border-[oklch(0.88_0.015_265)] text-[oklch(0.42_0.19_265)] text-xs font-semibold font-display tracking-wide mb-5">
@@ -60,7 +61,7 @@ export default function FAQSection() {
               Can't find what you're looking for? Our team is happy to answer any questions.
             </p>
             <button
-              onClick={() => document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => scrollToHash("#cta")}
               className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold font-display"
             >
               Book a Free Demo
@@ -69,10 +70,10 @@ export default function FAQSection() {
 
           {/* Right: Accordion */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
+            viewport={view}
+            transition={luxuryTransition}
             className="space-y-3"
           >
             {faqs.map((faq, i) => (
@@ -103,7 +104,7 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.4, ease: luxuryEase }}
                       className="overflow-hidden"
                     >
                       <p className="px-5 pb-5 text-base text-[oklch(0.45_0.015_265)] leading-relaxed">

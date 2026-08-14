@@ -1,23 +1,23 @@
-/*
- * InstaClient Home Page
- * Design: Precision Minimalism meets AI-Native SaaS
- * Sections: Navbar → Hero → LogoBar → HowItWorks → Features → ROI → Testimonials → Pricing → FAQ → CTA → Footer
- */
-
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import LogoBar from "@/components/LogoBar";
 import IndustriesSection from "@/components/IndustriesSection";
 import HowItWorks from "@/components/HowItWorks";
 import SpeedBanner from "@/components/SpeedBanner";
-import FeaturesSection from "@/components/FeaturesSection";
-import ROISection from "@/components/ROISection";
-import IntegrationsSection from "@/components/IntegrationsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PricingSection from "@/components/PricingSection";
-import FAQSection from "@/components/FAQSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+
+const FeaturesSection = lazy(() => import("@/components/FeaturesSection"));
+const ROISection = lazy(() => import("@/components/ROISection"));
+const IntegrationsSection = lazy(() => import("@/components/IntegrationsSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const CTASection = lazy(() => import("@/components/CTASection"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+function SectionFallback() {
+  return <div className="min-h-[70vh] bg-white" aria-hidden />;
+}
 
 export default function Home() {
   return (
@@ -28,14 +28,16 @@ export default function Home() {
       <IndustriesSection />
       <HowItWorks />
       <SpeedBanner />
-      <FeaturesSection />
-      <ROISection />
-      <IntegrationsSection />
-      <TestimonialsSection />
-      <PricingSection />
-      <FAQSection />
-      <CTASection />
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <FeaturesSection />
+        <ROISection />
+        <IntegrationsSection />
+        <TestimonialsSection />
+        <PricingSection />
+        <FAQSection />
+        <CTASection />
+        <Footer />
+      </Suspense>
     </div>
   );
 }

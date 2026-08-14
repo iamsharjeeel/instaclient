@@ -6,9 +6,9 @@ The archive includes local handover copies so a future agent does not depend sol
 
 | Local archive file | Current runtime reference | Current use | Notes |
 |---|---|---|---|
-| `handover/assets/clientflow-medspa-cropped_5326c33c.png` | `/images/medspa-cropped.png` | Featured testimonial background | Copied into `client/public/images/` for Vercel. |
-| `handover/assets/dr-golla_313053c9.png` | `/images/dr-golla.png` | Dr. Dinakar Golla testimonial avatar | Copied into `client/public/images/`. |
-| `handover/assets/dr-worry_35b8abe2.png` | `/images/dr-worry.png` | Dr. James Worry testimonial avatar | Copied into `client/public/images/`. |
+| `handover/assets/clientflow-medspa-cropped_5326c33c.png` | `/images/medspa-cropped.webp` | Featured testimonial background | Served as compressed WebP from `client/public/images/`. |
+| `handover/assets/dr-golla_313053c9.png` | `/images/dr-golla.webp` | Dr. Dinakar Golla testimonial avatar | Compressed WebP. |
+| `handover/assets/dr-worry_35b8abe2.png` | `/images/dr-worry.webp` | Dr. James Worry testimonial avatar | Compressed WebP. |
 | `handover/assets/external/amanda-chen-stock.jpg` | `/images/amanda-chen.jpg` | Dr. Amanda Chen avatar | Local copy; Unsplash URL no longer used at runtime. |
 | `handover/assets/external/michael-thornton-stock.jpg` | `/images/michael-thornton.jpg` | Michael Thornton avatar | Local copy; Unsplash URL no longer used at runtime. |
 | `handover/assets/external/rachel-nguyen-stock.jpg` | `/images/rachel-nguyen.jpg` | Dr. Rachel Nguyen avatar | Local copy; Unsplash URL no longer used at runtime. |
