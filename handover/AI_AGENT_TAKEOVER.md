@@ -15,7 +15,8 @@ Maintain and extend **InstaClient**, an AI-powered speed-to-lead, missed-call re
 | Icons | Lucide React | Continue using it for new UI iconography. |
 | Form behavior | `CTASection.tsx` | Validates required fields, fires GoHighLevel tracking if available, then redirects after two seconds. |
 | Tracking | `client/index.html` | External GoHighLevel tracking script uses ID `tk_fae0a0e3567a4e3fa237a910fbb5747a`. |
-| Analytics | `client/index.html` | Host-injected `VITE_ANALYTICS_ENDPOINT` and `VITE_ANALYTICS_WEBSITE_ID`. |
+| Analytics | `client/src/main.tsx` | Optional Umami via `VITE_ANALYTICS_ENDPOINT` and `VITE_ANALYTICS_WEBSITE_ID`. Omitted vars disable the script. |
+| Hosting | Vercel | Static Vite build to `dist/public`. SPA fallback in `vercel.json`. |
 
 ## Essential Commands
 
@@ -27,6 +28,8 @@ pnpm run build
 ```
 
 The build is expected to pass without adding a backend. Do not add server dependencies unless the requested feature truly needs one. A GoHighLevel webhook has **not** been added; the current form tracks client-side and redirects to `https://book.instaclient.io/introcall`.
+
+Production hosting is Vercel. `pnpm run build` emits a static site to `dist/public`. Do not restore the Express server or Manus plugins.
 
 ## Component Ownership
 

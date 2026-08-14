@@ -22,10 +22,13 @@ const footerLinks = {
 
 export default function Footer() {
   const handleScrollLink = (href: string) => {
-    if (href.startsWith("#")) {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (!href.startsWith("#")) return;
+    if (window.location.pathname !== "/") {
+      window.location.assign(`/${href}`);
+      return;
     }
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

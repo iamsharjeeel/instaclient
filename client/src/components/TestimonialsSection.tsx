@@ -9,14 +9,14 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
-const MEDSPA_IMG = "/manus-storage/clientflow-medspa-cropped_5326c33c.png";
+const MEDSPA_IMG = "/images/medspa-cropped.png";
 
 const testimonials = [
   {
     quote: "We were losing calls every single day and didn't realize how much it was costing us. In the first 30 days, InstaClient booked 15 appointments from calls we would have never followed up on. That's over $18,000 in revenue we would have just left on the table.",
     author: "Dr. Amanda Chen",
     role: "Owner, Radiance Aesthetics & MedSpa",
-    avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/amanda-chen.jpg",
     revenue: "$18,400 recovered",
     stars: 5,
     featured: true,
@@ -25,7 +25,7 @@ const testimonials = [
     quote: "I assumed our front desk had follow-up under control. Turns out we were dropping 8 to 10 calls a week — mostly after hours. InstaClient recovered 6 consults in the first two weeks alone. Patients actually comment on how fast we respond now.",
     author: "Dr. Dinakar Golla",
     role: "Owner, Golla Plastic Surgery",
-    avatar: "/manus-storage/dr-golla_313053c9.png",
+    avatar: "/images/dr-golla.png",
     revenue: "$11,200 recovered",
     stars: 5,
     featured: false,
@@ -34,7 +34,7 @@ const testimonials = [
     quote: "Setup was faster than I expected — we were live in under a week. Within the first 10 days we had 4 new appointments booked without anyone on my team doing anything manually. The time savings alone would have justified it. The revenue was just a bonus.",
     author: "Michael Thornton",
     role: "Owner, American Laser Med Spa",
-    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/michael-thornton.jpg",
     revenue: "$9,200 recovered",
     stars: 5,
     featured: false,
@@ -43,7 +43,7 @@ const testimonials = [
     quote: "Website leads were sitting for hours before anyone followed up. Once InstaClient was live, they were getting a response in seconds. Our consult booking rate went up noticeably in the first month and we didn't change a single other thing.",
     author: "Dr. Rachel Nguyen",
     role: "Medical Director, Lux Med Spa",
-    avatar: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/rachel-nguyen.jpg",
     revenue: "$14,600 recovered",
     stars: 5,
     featured: false,
@@ -52,7 +52,7 @@ const testimonials = [
     quote: "We had a patient list we hadn't touched in over a year. InstaClient ran a reactivation campaign and we generated $31,500 in booked appointments from existing patients in just over 45 days. That's revenue that was already sitting there — we just needed a system to go get it.",
     author: "Dr. James Worry",
     role: "Owner, Golla Dermatology",
-    avatar: "/manus-storage/dr-worry_35b8abe2.png",
+    avatar: "/images/dr-worry.png",
     revenue: "$31,500 reactivated",
     stars: 5,
     featured: false,

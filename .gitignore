@@ -2,6 +2,10 @@
 **/node_modules
 .pnpm-store/
 
+# Vercel
+.vercel
+.manus-logs/
+
 # Build outputs
 dist/
 build/

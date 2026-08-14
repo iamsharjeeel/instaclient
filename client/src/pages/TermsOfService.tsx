@@ -164,8 +164,8 @@ export default function TermsOfService() {
             <p className="leading-relaxed text-sm">For questions about these Terms, please contact us:</p>
             <div className="mt-3 p-4 rounded-xl bg-[oklch(0.97_0.005_265)] border border-[oklch(0.91_0.006_265)] text-sm space-y-1">
               <p><strong>InstaClient, Inc.</strong></p>
-              <p>Email: <span className="text-[oklch(0.42_0.19_265)]">legal@clientflow.ai</span></p>
-              <p>For general inquiries: <span className="text-[oklch(0.42_0.19_265)]">hello@clientflow.ai</span></p>
+              <p>Email: <span className="text-[oklch(0.42_0.19_265)]">legal@instaclient.io</span></p>
+              <p>For general inquiries: <span className="text-[oklch(0.42_0.19_265)]">hello@instaclient.io</span></p>
             </div>
           </section>
         </div>

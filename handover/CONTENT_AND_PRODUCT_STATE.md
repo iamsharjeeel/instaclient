@@ -4,7 +4,7 @@
 
 The site source uses the title **“InstaClient — Turn Every Missed Call Into a Booked Appointment.”** Its source-level meta description positions InstaClient as an AI-powered speed-to-lead and missed-call recovery platform for med spas, plastic surgeons, and home-service businesses.
 
-Current project domains are `instaclient.io`, `www.instaclient.io`, and the Manus preview domain. The source title is correct; a different hosted tab label is a project-settings issue rather than a component-copy issue.
+Current project domains are `instaclient.io`, `www.instaclient.io`. The source title is correct.
 
 ## Hero
 

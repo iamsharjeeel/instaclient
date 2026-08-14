@@ -1,6 +1,6 @@
 # Validation Record
 
-The source snapshot was validated on **2026-08-14** from the project root.
+The source snapshot was re-validated on **2026-08-14** after Vercel publish prep (static Vite build, no Express/Manus host).
 
 | Check | Command | Result |
 |---|---|---|

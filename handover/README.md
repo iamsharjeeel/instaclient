@@ -19,7 +19,7 @@ This folder is the operational handover for the **InstaClient** marketing site. 
 
 ## Fast Start
 
-This is a **React 19 + TypeScript + Vite + Tailwind CSS 4** static marketing site. Run the following from the project root after extracting the archive:
+This is a **React 19 + TypeScript + Vite + Tailwind CSS 4** static marketing site. Run the following from the project root:
 
 ```bash
 pnpm install --frozen-lockfile
@@ -32,6 +32,8 @@ The local development server is configured to bind to the host. Use the preview 
 pnpm run check
 pnpm run build
 ```
+
+Vercel builds with `pnpm run build` and serves `dist/public`. SPA routes (`/privacy`, `/terms`) are rewritten to `index.html`.
 
 ## Important Handover Rule
 

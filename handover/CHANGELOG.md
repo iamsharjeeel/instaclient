@@ -4,6 +4,7 @@ This is a condensed continuity record of the most meaningful site decisions. The
 
 | Version / period | Change preserved in current source |
 |---|---|
+| 2026-08-14 | Static Vite + Vercel publish prep: local public images, SPA rewrites, Manus/Express host removed. |
 | `8d66728e` | Removed all free-trial language from the Pricing header and Terms of Service billing section. |
 | `ff29474b` → `d4ffffbf` | Updated industry positioning and descriptions, equalized card lengths, and reduced industry heading size to prevent wrapping. |
 | `dea16506` | Changed visible 90-day ROI benchmark from 640% to 380% for a more conservative, believable presentation. |
@@ -23,4 +24,4 @@ The hero phone mockup must remain static, not floating. The logo bar and testimo
 
 ## Important Historical Failure
 
-The featured testimonial image previously failed because a temporary asset URL returned `403`. The current source uses a `/manus-storage/` asset and the archive includes a local backup. If migrating to another host, upload the local asset and update `MEDSPA_IMG` rather than relying on the existing Manus path.
+The featured testimonial image previously failed because a temporary asset URL returned `403`. Runtime images now live in `client/public/images/` so they deploy with the static site. Keep the handover copies as backups.

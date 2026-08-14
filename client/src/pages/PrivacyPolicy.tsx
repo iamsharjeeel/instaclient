@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
               <li><strong>Portability:</strong> Request a machine-readable copy of your data</li>
               <li><strong>Opt-out:</strong> Unsubscribe from marketing communications at any time via the link in any email</li>
             </ul>
-            <p className="text-sm leading-relaxed mt-3">To exercise these rights, contact us at <span className="text-[oklch(0.42_0.19_265)] font-medium">privacy@clientflow.ai</span>.</p>
+            <p className="text-sm leading-relaxed mt-3">To exercise these rights, contact us at <span className="text-[oklch(0.42_0.19_265)] font-medium">privacy@instaclient.io</span>.</p>
           </section>
 
           <section>

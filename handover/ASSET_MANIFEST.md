@@ -6,12 +6,12 @@ The archive includes local handover copies so a future agent does not depend sol
 
 | Local archive file | Current runtime reference | Current use | Notes |
 |---|---|---|---|
-| `handover/assets/clientflow-medspa-cropped_5326c33c.png` | `/manus-storage/clientflow-medspa-cropped_5326c33c.png` | Featured testimonial background | Cropped medical-spa interior. Replace runtime reference if moving outside the current host. |
-| `handover/assets/dr-golla_313053c9.png` | `/manus-storage/dr-golla_313053c9.png` | Dr. Dinakar Golla testimonial avatar | User-supplied image preserved locally. |
-| `handover/assets/dr-worry_35b8abe2.png` | `/manus-storage/dr-worry_35b8abe2.png` | Dr. James Worry testimonial avatar | User-supplied image preserved locally. |
-| `handover/assets/external/amanda-chen-stock.jpg` | Unsplash URL in `TestimonialsSection.tsx` | Dr. Amanda Chen avatar | Current source retains external URL; local copy is archival. |
-| `handover/assets/external/michael-thornton-stock.jpg` | Unsplash URL in `TestimonialsSection.tsx` | Michael Thornton avatar | Current source retains external URL; local copy is archival. |
-| `handover/assets/external/rachel-nguyen-stock.jpg` | Unsplash URL in `TestimonialsSection.tsx` | Dr. Rachel Nguyen avatar | Current source retains external URL; local copy is archival. |
+| `handover/assets/clientflow-medspa-cropped_5326c33c.png` | `/images/medspa-cropped.png` | Featured testimonial background | Copied into `client/public/images/` for Vercel. |
+| `handover/assets/dr-golla_313053c9.png` | `/images/dr-golla.png` | Dr. Dinakar Golla testimonial avatar | Copied into `client/public/images/`. |
+| `handover/assets/dr-worry_35b8abe2.png` | `/images/dr-worry.png` | Dr. James Worry testimonial avatar | Copied into `client/public/images/`. |
+| `handover/assets/external/amanda-chen-stock.jpg` | `/images/amanda-chen.jpg` | Dr. Amanda Chen avatar | Local copy; Unsplash URL no longer used at runtime. |
+| `handover/assets/external/michael-thornton-stock.jpg` | `/images/michael-thornton.jpg` | Michael Thornton avatar | Local copy; Unsplash URL no longer used at runtime. |
+| `handover/assets/external/rachel-nguyen-stock.jpg` | `/images/rachel-nguyen.jpg` | Dr. Rachel Nguyen avatar | Local copy; Unsplash URL no longer used at runtime. |
 
 ## Font Assets
 
